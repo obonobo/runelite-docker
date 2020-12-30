@@ -20,6 +20,7 @@ circuit_breaker_loop() {
         if ! java_is_running; then
             (( broken++ ))
             echo -e "\n\n =================== NOT RUNNING: $broken\n\n"
+            ps -ef
         else
             broken=0
         fi
@@ -37,7 +38,8 @@ circuit_breaker_loop() {
 
 
 supervise_java_process() {
-    circuit_breaker_loop 0.5 20
+    # circuit_breaker_loop 0.5 100
+    sleep infinity
 }
 
 

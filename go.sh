@@ -9,6 +9,7 @@ run-container() {
     docker container rm -f runelite
     docker run --name runelite \
                --env DISPLAY \
+               -it \
                --network host \
                --mount type=bind,source=${HOME}/.Xauthority,target=/root/.Xauthority \
                runelite:latest
